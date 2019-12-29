@@ -1,0 +1,60 @@
+<mat-horizontal-stepper labelPosition="bottom" #stepper>
+    <mat-step [stepControl]="datosGeneralesFormGroup">
+        <div class="formulario">
+            <form [formGroup]="datosGeneralesFormGroup">
+                <ng-template matStepLabel>Datos Generales</ng-template>
+
+                <mat-form-field>
+                    <input  matInput placeholder="Id.Ingreso" formControlName="idIngreso">
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput placeholder="Origen" formControlName="origenIngreso">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Código Ingreso" formControlName="codIngreso">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Fecha Ingreso" formControlName="fecIngreso"
+                            (dateChange)="onChangeFecha($event)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker ></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Atendido por" formControlName="idPersonal">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Total Ingreso" type="number" formControlName="totIngreso"  class="example-right-align">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="ingresoFormGroup" optional>
+        <form [formGroup]="ingresoFormGroup">
+            <ng-template matStepLabel>Detalle del ingreso</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Address" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Detalle del pago</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>

@@ -1,0 +1,30 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <div>
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Fecha" 
+                [(ngModel)]="fechaSelected" (dateChange)="onChangeFecha($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [startAt]="fechaSelected"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Vista</mat-label>
+          <mat-select [(value)]="vistaSelected" (selectionChange)="onChangeVista($event)">
+            <mat-option value="1"> Vista Estilista </mat-option>
+            <mat-option value="2"> Vista Cronológica </mat-option>
+            <mat-option value="3"> Vista por Etapas </mat-option>
+          </mat-select>
+          
+        </mat-form-field>
+
+      </div>
+    </mat-expansion-panel-header>
+
+    
+  </mat-expansion-panel>
+  
+   <app-list-works></app-list-works>
+
+</mat-accordion>

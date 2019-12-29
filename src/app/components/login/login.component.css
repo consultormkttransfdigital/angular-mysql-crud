@@ -1,0 +1,73 @@
+body{
+    background: linear-gradient(#E57373, white);
+    position: relative;
+}
+
+.login-container {
+    /* border: 1px solid blue; */
+    background: white;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    margin: auto;
+}
+
+.login-container{
+    text-align: center;
+}
+
+.login-container img {
+    /* border: 1px solid red; */
+    max-width: 100%;
+    max-height: 100%;
+    display:block;
+}
+
+.presentacion {
+    /* width:360px; */
+}
+
+.logo {
+    padding:25px 50px 25px 50px;
+    /* border: 1px solid blue; */
+}
+
+.login-form {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    padding: 0px 50px;
+
+    justify-content: space-around;
+  }
+  
+.login-form > * {
+    width: 100%;
+}
+
+.btn{    
+    /* width: 75%;
+    max-width: 100%;
+    color:black;
+    margin: 20px 20px; */
+}
+
+/* .logo {
+    background-image: ulr("../../../assets/pepes-logo.png");
+} */
+
+
+/* .login-container img {
+    border: 1px solid red;
+    display:block;
+    background-size: cover;
+} */

@@ -1,0 +1,147 @@
+<mat-list>
+    <mat-list-item>Usuarios frecuentes</mat-list-item>
+
+    <div #swiperContainer class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div *ngFor = "let usrFrecuente of dataSourceUsrFrecuentes, let i = index" class="swiper-slide">
+                <button (click)="OnSelectedUsrFrecuente(i)">
+                    <img class='imgRedonda' src= "{{ usrFrecuente.url_usuario }}" alt="">
+                </button>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    
+    </div>
+
+    
+    <mat-divider></mat-divider>
+    <mat-list-item>Otros usuarios</mat-list-item>
+
+
+
+    <div #swiperAdicional class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div *ngFor = "let usrOtros of dataSourceUsrOtros, let i = index" class="swiper-slide">
+                <button (click)="OnSelectedUsrOtros(i)">
+                    <img class='imgRedonda' src= "{{ usrOtros.url_usuario }}" alt="">
+                </button>
+            </div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    
+    </div>
+
+    
+</mat-list>
+
+
+        
+        
+
+        
+
+
+
+
+<!-- 
+<div class="grid">
+    <div class="usrMasUsados">
+    </div>
+    <div class="otrosUsuarios">
+    </div>
+</div>
+     -->
+
+<!-- 
+<p>User Testimonials</p>
+
+<div #swiperContainer class="swiper-container">
+  
+     <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <figure>
+                <blockquote> 
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit maiores minus, distinctio voluptatibus."
+                </blockquote>
+                <figcaption>Jhon Doe</figcaption>
+            </figure>
+        </div>
+        <div class="swiper-slide">
+            <figure>
+                <blockquote> 
+                    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus exercitationem repellat, unde qui adipisci sint."
+                </blockquote>
+                <figcaption>Jhon Doe</figcaption>
+            </figure>
+        </div>
+        <div class="swiper-slide">
+            <figure>
+                <blockquote> 
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio cumque excepturi nobis. Id?"
+                </blockquote>
+                <figcaption>Jhon Doe</figcaption>
+            </figure>
+        </div>
+        <div class="swiper-slide">
+            <figure>
+                <blockquote> 
+                    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus exercitationem repellat, unde qui adipisci sint."
+                </blockquote>
+                <figcaption>Jhon Doe</figcaption>
+            </figure>
+        </div>
+        <div class="swiper-slide">
+            <figure>
+                <blockquote> 
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ratione adipisci incidunt."
+                </blockquote>
+                <figcaption>Jhon Doe</figcaption>
+            </figure>
+        </div>       
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+   
+</div>
+ -->
+
+
+
+<!--  <ul>
+    <li *ngFor = "let element of dataSourceUsrFrecuentes">
+        {{ element.url_usuario }}
+    </li>
+</ul>
+ -->
+
+<!-- 
+ <div class="swiper-slide">
+    <button (click)="OnSelectedUsr()">
+        <img class='imgRedonda' src="../../../assets/avatar1.jpg" alt="">
+    </button>
+</div>
+<div class="swiper-slide">
+    <img class='imgRedonda' src="../../../assets/avatar2.jpg" alt="">
+</div>
+<div class="swiper-slide">
+    <img class='imgRedonda' src="../../../assets/avatar3.jpg" alt="">
+</div>
+<div class="swiper-slide">
+    <img class='imgRedonda' src="../../../assets/avatar4.jpg" alt="">
+</div>
+<div class="swiper-slide">
+    <img class='imgRedonda' src="../../../assets/avatar5.jpg" alt="">
+</div>
+ -->

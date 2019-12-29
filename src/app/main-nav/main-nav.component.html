@@ -1,0 +1,157 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- <div *ngIf=" mostrar; then ModifiedBehavior else OriginalBehavior"> </div> -->
+      <!-- [opened]="(isHandset$ | async) === false"> -->
+
+      <mat-sidenav #drawer class="sidenav" fixedInViewport="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(dato$ | async)?.showNavBar ? (isHandset$ | async) === false : (isHandset$ | async) ">
+        <mat-toolbar>
+          <mat-icon>account_circle</mat-icon>
+          Pepe's Spa</mat-toolbar>
+
+
+          
+        <mat-expansion-panel (afterExpand)="afterPanelOpenedClosed($event)"
+        (afterCollapse)="afterPanelOpenedClosed($event)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Panel Spa</mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <a mat-list-item [routerLink]="['/panel']">
+              <mat-icon>account_circle</mat-icon>
+              Iniciar Día</a>
+            <a mat-list-item [routerLink]="['/simultaneos']">
+              <mat-icon>account_circle</mat-icon>
+              Arribo de Clientes </a>
+            
+          </mat-nav-list>
+
+        </mat-expansion-panel>
+
+
+        <mat-expansion-panel (afterExpand)="afterCajaOpenedClosed($event)"
+        (afterCollapse)="afterCajaOpenedClosed($event)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>Caja</mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <a mat-list-item [routerLink]="['/ingresos']">
+              <mat-icon>account_circle</mat-icon>
+              Ingresos</a>
+            <a mat-list-item [routerLink]="['/egresos']">
+              <mat-icon>account_circle</mat-icon>
+              Egresos </a>
+            
+          </mat-nav-list>
+
+        </mat-expansion-panel>
+
+
+        <mat-expansion-panel (afterExpand)="afterCitasOpenedClosed($event)"
+        (afterCollapse)="afterCitasOpenedClosed($event)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>account_circle</mat-icon>
+              Citas
+            </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (afterExpand)="afterClientesOpenedClosed($event)"
+        (afterCollapse)="afterClientesOpenedClosed($event)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>account_circle</mat-icon>
+              Clientes
+            </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel (afterExpand)="afterComprasOpenedClosed($event)"
+        (afterCollapse)="afterComprasOpenedClosed($event)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>account_circle</mat-icon>
+              Compras
+            </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+          </mat-expansion-panel-header>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-icon>account_circle</mat-icon>
+              Laboratorio
+            </mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <mat-nav-list>
+            <a mat-list-item [routerLink]="['/juegos']">
+              <mat-icon>account_circle</mat-icon>
+              Juegos</a>
+            <a mat-list-item [routerLink]="['/voice']">
+              <mat-icon>account_circle</mat-icon>
+              Reconocimiento de voz</a>
+            
+          </mat-nav-list>
+        </mat-expansion-panel>
+
+      </mat-sidenav>
+
+
+  
+
+  
+  <!-- Se eliminó para mostrar siempre el Menú Hamburguesa
+  *ngIf="isHandset$ | async" -->
+
+
+  <mat-sidenav-content>
+    
+    <!-- <mat-toolbar color="primary"> -->
+
+    <mat-toolbar *ngIf="(dato$ | async)?.showNavBar" class="app-toolbar" color="primary"> 
+  
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span> {{ (dato$ | async)?.titleOpcSelected }} </span>
+      <span class="toolbar-spacer"></span>
+
+      <button type="button" aria-label="Indicators" mat-icon-button (click)="onClickIndicators()">
+        <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Indicators icon">signal_cellular_alt</mat-icon>
+      </button>
+
+      <button type="button" aria-label="Mensajería" mat-icon-button (click)="onClickMessaging()">
+        <mat-icon class="toolbar-icon" aria-hidden="false" aria-label="Messaging icon">chat_bubble_outline</mat-icon>
+      </button>
+
+      <button type="button" aria-label="Avatar" mat-icon-button (click)="onClickAvatar()">
+
+        <!-- "/assets/avatar1.jpg" -->
+        <!-- <div id="avatar-toolbar" [ngStyle]= "{ 'background-image' : (dato$ | async)?.urlImgUsrSelected }"> </div> -->
+        <div id="avatar-toolbar" [ngStyle]= "{ 'background-image' : 'url(' + (dato$ | async)?.urlImgUsrSelected + ')'}"> </div>
+
+      </button>
+
+    </mat-toolbar>
+    
+    <!-- Add Content Here -->
+    <ng-content></ng-content> 
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

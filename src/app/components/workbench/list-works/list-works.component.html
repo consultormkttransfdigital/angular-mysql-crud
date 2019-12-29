@@ -1,0 +1,110 @@
+<!-- <div class= "titulo">
+  <p> Este texto debe salir </p>
+  <p> {{ dato$.fechaProgramacion }} </p>
+
+ <p> {{ ( dato$ | async )?.titleOpcSelected }} </p>
+  <p> {{ ( dato$ | async )?.fechaProgramacion }} </p>
+  <p> {{ ( dato$ | async )?.showNavBar }} </p>
+ <p> {{ ( dato$ | async )?.vista }} </p>
+ <p> {{ ( dato$ | async )?.estado }} </p>
+
+ <p> {{ titulo }} </p>
+</div>
+ -->
+<!-- 
+<mat-chip-list aria-label="Actions selection">
+  <mat-chip *ngFor="let chip of chips" [selected]="chip.state" (selectionChange)="changeSelected($event)" (click)="chip.state=!chip.state">{{chip.name}}</mat-chip>
+</mat-chip-list>
+ -->
+ 
+<div class="actionButtons">
+    <button mat-raised-button color="accent" (click)="onIniciarDia()">Iniciar Día</button>
+    <button mat-raised-button color="accent">Arribo de Cliente</button>
+</div>
+
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+              <!-- id_programacion Column -->
+              <ng-container matColumnDef="id_programacion" sticky>
+                <th mat-header-cell *matHeaderCellDef> ID Programación </th>
+                <td mat-cell *matCellDef="let element"> {{element.id_programacion}} </td>
+              </ng-container>
+          
+              <!-- fec_programacion Column -->
+              <ng-container matColumnDef="fec_programacion">
+                <th mat-header-cell *matHeaderCellDef> 
+  
+                    <mat-card class="example-card">
+                        <mat-card-header>
+                            <div mat-card-avatar class="example-header-image"></div>
+                            <mat-card-title> Título </mat-card-title>
+                            <mat-card-subtitle> Descripción </mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content></mat-card-content> 
+                        <mat-card-actions></mat-card-actions>
+                    </mat-card>
+  
+                </th>
+                <td mat-cell *matCellDef="let element"> {{element.fec_programacion}} </td>
+              </ng-container>
+          
+              <!-- id_horario_det Column -->
+              <ng-container matColumnDef="id_horario_det">
+                <th mat-header-cell *matHeaderCellDef> Turno </th>
+                <td mat-cell *matCellDef="let element"> {{element.id_horario_det}} </td>
+              </ng-container>
+          
+              <!-- id_personal Column -->
+              <ng-container matColumnDef="id_personal">
+                <th mat-header-cell *matHeaderCellDef> Estilista </th>
+                <td mat-cell *matCellDef="let element"> {{element.id_personal}} </td>
+              </ng-container>
+          
+              <!-- id_cliente Column -->
+              <ng-container matColumnDef="id_cliente">
+                <th mat-header-cell *matHeaderCellDef> Cliente </th>
+                <td mat-cell *matCellDef="let element"> {{element.id_cliente}} </td>
+              </ng-container>
+  
+              <!-- est_programacion Column -->
+              <ng-container matColumnDef="est_programacion">
+                <th mat-header-cell *matHeaderCellDef> Estado </th>
+                <td mat-cell *matCellDef="let element"> {{element.est_programacion}} </td>
+              </ng-container>
+  
+              <!-- Star Column -->
+              <ng-container matColumnDef="star" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <mat-icon>more_vert</mat-icon>
+                </td>
+              </ng-container>
+          
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+         
+          
+        
+  
+    </table>
+  </div>  
+  
+
+
+<!-- <mat-card class="example-card" *ngFor="let programacion of programaciones">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title> {{ programacion.id_programacion }} </mat-card-title>
+        <mat-card-subtitle>{{programacion.fec_programacion}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src='https://material.angular.io/assets/img/examples/shiba2.jpg' alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p>{{ programacion.id_horario_det}}
+        </p>
+    </mat-card-content> 
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card> -->
