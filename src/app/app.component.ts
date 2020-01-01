@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { window } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,3 +16,10 @@ export class AppComponent implements OnInit{
   }
 
 }
+
+
+
+
+/*   onActivate(event){
+    window.scroll(0,0);
+  } */

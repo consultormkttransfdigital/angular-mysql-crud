@@ -1,10 +1,12 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, NgZone} from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../../models/globals.model';
 import { IndicadoresAction } from 'src/app/main-nav/main-nav.actions';
 
 import { Chart } from 'chart.js';
+import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/overlay';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'indicadores',
@@ -19,6 +21,9 @@ export class IndicadoresComponent implements OnInit, AfterViewInit {
   @ViewChild('canvasBars2', { static : true} ) canvasBars2 : ElementRef;
   @ViewChild('canvasLines2', { static : true} ) canvasLines2 : ElementRef;
 
+  @ViewChild('container', { static : true} ) container : ElementRef;
+  @ViewChild('fabInner', { static : true} ) fabInner : ElementRef;
+
   // title = "app";
   chartBars = [];
   chartLines = [];
@@ -26,11 +31,19 @@ export class IndicadoresComponent implements OnInit, AfterViewInit {
   chartBars2 = [];
   chartLines2 = [];
 
-  constructor( private store: Store<AppState> ) { }
+  windowScrolled: boolean;
+
+  constructor( private store: Store<AppState> ,
+               private scrollDispatcher: ScrollDispatcher,
+               private zone: NgZone,
+               private route: Router ) {
+
+  }
 
   ngOnInit() {
     const accion = new IndicadoresAction('Indicadores de Gestión');
     this.store.dispatch(accion);
+    this.windowScrolled = false;
   }
 
   ngAfterViewInit(){
@@ -116,11 +129,67 @@ export class IndicadoresComponent implements OnInit, AfterViewInit {
         data: data,
         options: options
       });
+
+
+      
+
+
+      this.scrollDispatcher.scrolled().
+        subscribe((cdk: CdkScrollable) => {
+
+          console.log("Evento Disparado!!!");
+          console.log(this.fabInner.nativeElement);
+          console.log(cdk.measureScrollOffset("top"));
+
+          if (cdk.measureScrollOffset("top") > 0 ) {
+            this.windowScrolled = true;
+          } else
+            this.windowScrolled = false;
+
+          this.zone.run(()=>{
+            
+          });
+        }); 
+
     });
       
  
 
 
   }
+
+  
+  
+  irArriba() {
+/*     this.scrollDispatcher.scrolled().subscribe((cdk: CdkScrollable) => {
+      //cdk.scrollTo(-100);
+    });
+ */
+    console.log("irArriba!");
+    // this.container.nativeElement.scrollTo(0,0);
+    this.route.navigate(['indicadores']);
+  }
+
+
+  scrollToTop() {
+    console.log("scrollToTop!");
+    (function smoothscroll() {
+        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        console.log("currentScroll", currentScroll);
+
+/*         if (currentScroll > 0) {
+            window.requestAnimationFrame(smoothscroll);
+            // window.scrollTo(0, currentScroll - (currentScroll / 8));
+            window.scrollTo(0, 0);
+        } */
+        
+        window.requestAnimationFrame(smoothscroll);
+        window.scrollTo(0, 0);
+
+    })();
+}
+
+
+
 
 }

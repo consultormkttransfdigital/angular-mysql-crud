@@ -99,6 +99,32 @@
 
 
 
+.fab-button {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 1000;
+}
+
+
+.fab-button button,
+.fab-button a {
+  margin-right: 8px;
+}
+
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 15px;
+  right:15px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+}
+
+.show-scrollTop {
+  opacity: 1;
+  transition: all .2s ease-in-out;
+}
 
 /* 
   .contenedor {
