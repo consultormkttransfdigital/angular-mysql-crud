@@ -1,5 +1,6 @@
 export interface AppState {
     titleOpcSelected: string;
+    routeOpcSelected: string;
     idUsrSelected: number;
     nomUsrSelected: string;
     cargoUsrSelected: string;

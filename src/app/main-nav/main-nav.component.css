@@ -16,6 +16,8 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+
+  box-shadow: 0px 8px 8px #ccc;
 }
 
 .toolbar-spacer {
@@ -33,4 +35,9 @@
   height: 40px;
 
   background-size: cover;
+}
+
+
+.sidenav-spacer {
+  flex: 1 1 auto;
 }

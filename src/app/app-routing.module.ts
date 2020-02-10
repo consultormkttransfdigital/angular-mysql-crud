@@ -19,12 +19,15 @@ import { Ejemplo1Component } from '../app/contador/ejemplo1/ejemplo1.component';
 import { ReduxComponent} from './contador/redux/redux.component';
 import { ReduxEjemploComponent } from './redux-ejemplo/redux-ejemplo.component';
 import { VoiceControlComponent } from './components/voice-control/voice-control.component';
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { IniciarDiaComponent } from './components/iniciar-dia/iniciar-dia.component';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'valida-usr', component: ValidaUsrComponent},
   {path: 'panel', component: WorkbenchComponent},
+  {path: 'iniciar-dia', component: IniciarDiaComponent},
   {path: 'simultaneos', component: SharedWorkComponent},
   {path: 'caja', component: CajaComponent},
   {path: 'ingresos', component: IngresosComponent},
@@ -33,6 +36,7 @@ const routes: Routes = [
   {path: 'clientes', component: ClientesComponent},
   {path: 'compras', component: ComprasComponent},
   {path: 'indicadores', component: IndicadoresComponent},
+  {path: 'notificaciones', component: NotificacionesComponent},
   {path: 'juegos', component: JuegosComponent},
   {path: 'padre-lej', component: PadreLejComponent},
   {path: 'ejemplo1', component: Ejemplo1Component},

@@ -90,7 +90,13 @@
     </table>
   </div>  
   
-
+  <div class="fab-button">
+    <input #searchKey name="q" id="searchKey" (change)="procesaComando()">
+    <!-- <input #searchKey name="q" id="searchKey" type="hidden"> -->
+    <button mat-fab color="primary" aria-label="icon-button for voice commmands" (click)="voiceCommands()">
+      <mat-icon>keyboard_voice</mat-icon>
+    </button>
+  </div>
 
 <!-- <mat-card class="example-card" *ngFor="let programacion of programaciones">
     <mat-card-header>

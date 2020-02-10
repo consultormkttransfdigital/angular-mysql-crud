@@ -7,6 +7,9 @@ import { AppState } from '../../models/globals.model';
 import * as fromMainNav from '../../main-nav/main-nav.actions';
 import { Usuario } from '../../models/Usuario';
 
+// Navigation
+import { Router } from '@angular/router';
+
 // import { CarouselModule, WavesModule } from 'angular-bootstrap-md'
 //var Glider = require("../../../assets/glider.min.js")
 
@@ -42,7 +45,8 @@ export class ValidaUsrComponent implements OnInit, AfterViewInit {
   dataSourceUsrFrecuentes = USERS_FRECUENTES_DATA;
   dataSourceUsrOtros = USERS_OTROS_DATA;
    
-  constructor(private store: Store<AppState>) { 
+  constructor(private store: Store<AppState>,
+              private route: Router) { 
     console.log("constructor", Swiper);
   }
 
@@ -99,6 +103,7 @@ export class ValidaUsrComponent implements OnInit, AfterViewInit {
   OnSelectedUsrFrecuente(index){
 
     let usrSeleccionado: Usuario;
+    let opcSelected: string = "iniciar-dia";
 
     usrSeleccionado = {
       id_usuario: this.dataSourceUsrFrecuentes[index].id_usuario,
@@ -111,6 +116,9 @@ export class ValidaUsrComponent implements OnInit, AfterViewInit {
 
     // Seteando usuario seleccionado
     this.store.dispatch(new fromMainNav.ValidaUsuarioAction(usrSeleccionado));
+
+    // Navegando a opción previa seleccionada
+    this.route.navigate([opcSelected]);
 
   }
 

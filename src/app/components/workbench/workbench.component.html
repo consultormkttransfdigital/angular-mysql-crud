@@ -1,7 +1,7 @@
 <mat-accordion>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
-      <div>
+      <div class = "filters">
         <mat-form-field>
           <input matInput [matDatepicker]="picker" placeholder="Fecha" 
                 [(ngModel)]="fechaSelected" (dateChange)="onChangeFecha($event)">

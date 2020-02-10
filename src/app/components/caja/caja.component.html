@@ -1,1 +1,55 @@
-<p>caja works!</p>
+<p>Lista de Ingresos</p>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id_ingreso">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id_ingreso}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="origen_ingreso">
+      <th mat-header-cell *matHeaderCellDef> Origen de Ingreso </th>
+      <td mat-cell *matCellDef="let element"> {{element.origen_ingreso}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="cod_ingreso">
+      <th mat-header-cell *matHeaderCellDef> Código de Ingreso </th>
+      <td mat-cell *matCellDef="let element"> {{element.cod_ingreso}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fec_ingreso">
+      <th mat-header-cell *matHeaderCellDef> Fecha de Ingreso </th>
+      <td mat-cell *matCellDef="let element"> {{element.fec_ingreso}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="id_persona">
+        <th mat-header-cell *matHeaderCellDef> Id. Persona </th>
+        <td mat-cell *matCellDef="let element"> {{element.id_persona}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="tot_ingreso">
+        <th mat-header-cell *matHeaderCellDef> Total Ingreso </th>
+        <td mat-cell *matCellDef="let element"> {{element.tot_ingreso}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Registro de Ingreso </th>
+        <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+    </ng-container>
+
+
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

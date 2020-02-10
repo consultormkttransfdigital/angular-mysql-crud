@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 // Especificando mejor el tipo de dato de retorno del get
 import { Game } from '../models/Game';

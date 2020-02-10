@@ -8,7 +8,7 @@ const configKey = makeStateKey('CONFIG');
 declare var webkitSpeechRecognition: any;
 
 @Component({
-  selector: 'app-voice-control',
+  selector: 'voice-control',
   templateUrl: './voice-control.component.html',
   styleUrls: ['./voice-control.component.css']
 })

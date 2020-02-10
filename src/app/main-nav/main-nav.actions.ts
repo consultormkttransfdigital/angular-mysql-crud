@@ -1,14 +1,20 @@
 import { Action } from '@ngrx/store';
 import { Usuario } from '../models/Usuario';
+import { OpcSelected } from '../models/OpcSelected';
+import { NotificacionesComponent } from '../components/notificaciones/notificaciones.component';
 
 export const LOGIN = '[titleOpcSelected] Login'; 
 export const VALIDA_USUARIO = '[idUsrSelected] Valida Usuario';
 export const PANEL = '[titleOpcSelected] Panel';
+export const INICIAR_DIA = '[OpcSelected] Iniciar Día';
 export const CAJA = '[titleOpcSelected] Caja';
 export const INGRESOS = '[titleOpcSelected] Ingresos';
 export const EGRESOS = '[titleOpcSelected] Egresos';
 export const CLIENTES = '[titleOpcSelected] Clientes';
+export const CITAS = '[titleOpcSelected] Citas';
+export const COMPRAS = '[titleOpcSelected] Compras';
 export const INDICADORES = '[titleOpcSelected] Indicadores';
+export const NOTIFICACIONES = '[titleOpcSelected] Notificaciones';
 
 export const ENTERAPP = '[showNavBar] EnterApp';
 
@@ -31,6 +37,12 @@ export class PanelAction implements Action {
     readonly type = PANEL;
 
     constructor( public payload : string ){}
+}
+
+export class IniciarDiaAction implements Action {
+    readonly type = INICIAR_DIA;
+
+    constructor( public payload : OpcSelected ) {}
 }
 
 export class CajaAction implements Action {
@@ -57,8 +69,26 @@ export class ClientesAction implements Action {
     constructor( public payload : string ){}
 }
 
+export class CitasAction implements Action {
+    readonly type = CITAS;
+
+    constructor ( public payload : string ) {}
+}
+
+export class ComprasAction implements Action {
+    readonly type = COMPRAS;
+
+    constructor (public payload : string) {}
+}
+
 export class IndicadoresAction implements Action {
     readonly type = INDICADORES;
+
+    constructor( public payload : string ){}
+}
+
+export class NotificacionesAction implements Action {
+    readonly type = NOTIFICACIONES;
 
     constructor( public payload : string ){}
 }
@@ -80,8 +110,9 @@ export class PanelFilterVistaAction implements Action {
 }
 
 
-export type mainNavActions = LoginAction | ValidaUsuarioAction | PanelAction | CajaAction | 
-    IngresosAction | EgresosAction | ClientesAction | IndicadoresAction |
+export type mainNavActions = LoginAction | ValidaUsuarioAction | PanelAction | IniciarDiaAction | CajaAction | 
+    IngresosAction | EgresosAction | ClientesAction | CitasAction | ComprasAction |
+    IndicadoresAction | NotificacionesAction |
     EnterAppAction | PanelFilterAction | PanelFilterVistaAction ;
 
                       

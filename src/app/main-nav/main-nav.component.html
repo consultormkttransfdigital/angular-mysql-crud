@@ -8,7 +8,7 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(dato$ | async)?.showNavBar ? (isHandset$ | async) === false : (isHandset$ | async) ">
         <mat-toolbar>
-          <mat-icon>account_circle</mat-icon>
+          <!-- <mat-icon>account_circle</mat-icon> -->
           Pepe's Spa</mat-toolbar>
 
 
@@ -16,16 +16,17 @@
         <mat-expansion-panel (afterExpand)="afterPanelOpenedClosed($event)"
         (afterCollapse)="afterPanelOpenedClosed($event)">
           <mat-expansion-panel-header>
-            <mat-panel-title>Panel Spa</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon>dashboard</mat-icon>
+              <span class="sidenav-spacer"></span>
+              Panel Spa</mat-panel-title>
             <mat-panel-description></mat-panel-description>
-          </mat-expansion-panel-header>
+            </mat-expansion-panel-header>
 
           <mat-nav-list>
-            <a mat-list-item [routerLink]="['/panel']">
-              <mat-icon>account_circle</mat-icon>
+            <a mat-list-item [routerLink]="['/valida-usr']">
               Iniciar Día</a>
             <a mat-list-item [routerLink]="['/simultaneos']">
-              <mat-icon>account_circle</mat-icon>
               Arribo de Clientes </a>
             
           </mat-nav-list>
@@ -36,16 +37,17 @@
         <mat-expansion-panel (afterExpand)="afterCajaOpenedClosed($event)"
         (afterCollapse)="afterCajaOpenedClosed($event)">
           <mat-expansion-panel-header>
-            <mat-panel-title>Caja</mat-panel-title>
+            <mat-panel-title>
+              <mat-icon>attach_money</mat-icon>
+              <span class="sidenav-spacer"></span>
+              Caja</mat-panel-title>
             <mat-panel-description></mat-panel-description>
           </mat-expansion-panel-header>
 
           <mat-nav-list>
             <a mat-list-item [routerLink]="['/ingresos']">
-              <mat-icon>account_circle</mat-icon>
               Ingresos</a>
             <a mat-list-item [routerLink]="['/egresos']">
-              <mat-icon>account_circle</mat-icon>
               Egresos </a>
             
           </mat-nav-list>
@@ -57,7 +59,8 @@
         (afterCollapse)="afterCitasOpenedClosed($event)">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon>account_circle</mat-icon>
+              <mat-icon>event</mat-icon>
+              <span class="sidenav-spacer"></span>
               Citas
             </mat-panel-title>
             <mat-panel-description></mat-panel-description>
@@ -68,7 +71,8 @@
         (afterCollapse)="afterClientesOpenedClosed($event)">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon>account_circle</mat-icon>
+              <mat-icon>contacts</mat-icon>
+              <span class="sidenav-spacer"></span>
               Clientes
             </mat-panel-title>
             <mat-panel-description></mat-panel-description>
@@ -79,7 +83,8 @@
         (afterCollapse)="afterComprasOpenedClosed($event)">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <mat-icon>account_circle</mat-icon>
+              <mat-icon>shopping_cart</mat-icon>
+              <span class="sidenav-spacer"></span>
               Compras
             </mat-panel-title>
             <mat-panel-description></mat-panel-description>
@@ -90,6 +95,7 @@
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon>account_circle</mat-icon>
+              <span class="sidenav-spacer"></span>
               Laboratorio
             </mat-panel-title>
             <mat-panel-description></mat-panel-description>

@@ -54,7 +54,6 @@ export class MainNavComponent {
    afterPanelOpenedClosed(event){
     // alert("Expandiendo");
     console.log("Expandiendo Panel!!!!");
-
     this.route.navigate(['panel']);
    }
 
@@ -63,9 +62,19 @@ export class MainNavComponent {
      this.route.navigate(['caja']);
    }
 
+   afterClientesOpenedClosed($event){
+    console.log("Expandiendo Clientes!!!!");
+    this.route.navigate(['clientes']);
+   }
+
    afterCitasOpenedClosed(event){
     console.log("Expandiendo Citas!!!!");
     this.route.navigate(['citas']);
+  }
+
+   afterComprasOpenedClosed($event){
+    console.log("Expandiendo Compras!!!!");
+    this.route.navigate(['compras']);
   }
 
    onClickIndicators(){
@@ -73,11 +82,11 @@ export class MainNavComponent {
    }
 
    onClickMessaging(){
-    this.route.navigate(['clientes']);
+    this.route.navigate(['notificaciones']);
    }
 
    onClickAvatar(){
-    this.route.navigate(['juegos']);
+    this.route.navigate(['valida-usr']);
    }
 
 }

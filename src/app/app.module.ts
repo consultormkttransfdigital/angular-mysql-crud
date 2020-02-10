@@ -55,8 +55,6 @@ import { StoreModule } from '@ngrx/store';
 import { miReducer } from '../app/redux-ejemplo/redux_ejemplo.reducer'; 
 
 
-
-
 import { mainNavReducer } from '../app/main-nav/main-nav.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
@@ -69,7 +67,10 @@ import { VoiceControlComponent } from './components/voice-control/voice-control.
 import { CajaComponent } from './components/caja/caja.component';
 import { IngresosComponent } from './components/ingresos/ingresos.component';
 import { EgresosComponent } from './components/egresos/egresos.component';
-import { PasswordValidationDirective } from './validations/password-validation.directive';  
+import { PasswordValidationDirective } from './validations/password-validation.directive';
+import { NotificacionesComponent } from './components/notificaciones/notificaciones.component';
+import { IniciarDiaComponent } from './components/iniciar-dia/iniciar-dia.component';  
+import { IngresosService } from './services/ingresos.service';
 
 // Se va incorporar manejo de variables globales con comunicaciones de servicios
 // Que soporten comunicaciones muchos a muchos entre componentes
@@ -106,7 +107,9 @@ import { PasswordValidationDirective } from './validations/password-validation.d
     CajaComponent,
     IngresosComponent,
     EgresosComponent,
-    PasswordValidationDirective
+    PasswordValidationDirective,
+    NotificacionesComponent,
+    IniciarDiaComponent
    ],
   imports: [
     BrowserModule,
@@ -146,7 +149,8 @@ import { PasswordValidationDirective } from './validations/password-validation.d
 // Cuando se agregaron las dos, se quedó con la última definición
 // La definición se sobre-escribió
 
-  providers: [GamesService, ComunicacionService, ConstantsService],
+  providers: [GamesService, IngresosService,
+              ComunicacionService, ConstantsService],
 
   bootstrap: [AppComponent]
   

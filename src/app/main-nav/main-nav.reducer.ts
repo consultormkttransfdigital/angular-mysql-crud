@@ -1,10 +1,12 @@
-import { Action } from '@ngrx/store';
+// import { Action } from '@ngrx/store';
+
 import { AppState } from '../models/globals.model';
 
 import * as fromMainNav from './main-nav.actions';
 
 export const initialState = {
     titleOpcSelected: 'Menú Principal',
+    routeOpcSelected: "",
     idUsrSelected: 0,
     nomUsrSelected: "",
     cargoUsrSelected: "",
@@ -35,6 +37,11 @@ export function mainNavReducer( state: AppState = initialState, action: fromMain
             return { ...state, 
                 titleOpcSelected: action.payload
             }
+        case fromMainNav.INICIAR_DIA:
+            return { ...state,
+                titleOpcSelected: action.payload.titleOpcSelected,
+                routeOpcSelected: action.payload.routeOpcSelected
+            }
         case fromMainNav.CAJA:
             return { ...state,
                 titleOpcSelected: action.payload
@@ -51,7 +58,19 @@ export function mainNavReducer( state: AppState = initialState, action: fromMain
             return { ...state, 
                 titleOpcSelected: action.payload
             }
+        case fromMainNav.CITAS:
+            return { ...state,
+                titleOpcSelected: action.payload
+            }
+        case fromMainNav.COMPRAS:
+            return { ...state,
+                titleOpcSelected: action.payload
+            }
         case fromMainNav.INDICADORES:
+            return { ...state,
+                titleOpcSelected: action.payload
+            }
+        case fromMainNav.NOTIFICACIONES:
             return { ...state,
                 titleOpcSelected: action.payload
             }

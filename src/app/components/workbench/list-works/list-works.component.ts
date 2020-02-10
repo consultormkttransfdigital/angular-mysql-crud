@@ -10,6 +10,14 @@ import { Observable} from 'rxjs';
 // Navigation
 import { Router } from '@angular/router';
 
+// voiceCommands
+import { ViewChild } from '@angular/core';
+declare var webkitSpeechRecognition: any;
+
+import * as fromMainNav from '../../../main-nav/main-nav.actions';
+import { OpcSelected } from '../../../models/OpcSelected';
+
+
 @Component({
   selector: 'app-list-works',
   templateUrl: './list-works.component.html',
@@ -29,7 +37,7 @@ export class ListWorksComponent implements OnInit {
 
     MiDato : AppState;
 
-
+    @ViewChild('searchKey', { static : true}) hiddenSearchHandler;
 
     constructor (public programacionesService: ProgramacionesService, 
       private store: Store<AppState>,
@@ -90,8 +98,98 @@ export class ListWorksComponent implements OnInit {
   }
 
   onIniciarDia(){
+    let opcSelected: OpcSelected;
+
+    opcSelected = {
+      titleOpcSelected: "Iniciar Día",
+      routeOpcSelected: "iniciar-dia"
+    }
+
+    console.log('Entrando a IniciarDia');
+
+    // Seteando usuario seleccionado
+    this.store.dispatch(new fromMainNav.IniciarDiaAction(opcSelected));
     this.route.navigate(['valida-usr']);
   }
+
+
+  voiceCommands(){
+
+    alert("Entrando a VoiceCommands!!!");
+
+    if('webkitSpeechRecognition' in window){
+
+        console.log("Entrando a VoiceSearch");
+
+        const vSearch = new webkitSpeechRecognition();
+        vSearch.continuous = false;
+        vSearch.interimresults = false;
+        vSearch.lang = 'es-ES';
+        vSearch.start();
+
+        const voiceHandler = this.hiddenSearchHandler.nativeElement;
+
+        vSearch.onresult = function(e){
+            voiceHandler.value = e.results[0][0].transcript;
+            vSearch.stop();
+            console.log(e.results[0][0].transcript);
+            alert("Comando ingresado: " + e.results[0][0].transcript);
+
+        }
+  
+        vSearch.onerror = function(e){
+            console.log(e);
+            vSearch.stop();
+        }
+    } else {
+
+      console.log("NO Entró a VoiceSearch");
+
+      }
+
+    
+
+  }
+
+
+procesaComando(){
+
+  const voiceHandler = this.hiddenSearchHandler.nativeElement;
+  let comando : string = voiceHandler.value;
+  let posComando : number;
+  var comandoRun: string;
+  
+  alert("ProcesaComando:" + comando);
+  comandoRun= "";
+
+              // Navegando a esa opción de acuerdo al comando
+   /*            posComando = comando.indexOf("cliente");
+              console.log(posComando);
+              if( posComando >= 0){
+                comandoRun = "clientes";
+                console.log(comandoRun);
+              } else {
+                posComando = comando.indexOf("cita");
+                console.log(posComando);
+                if( posComando >= 0){
+                  comandoRun = "citas";
+                  console.log(comandoRun);
+                }
+              } */
+  
+
+
+/*               console.log(comandoRun);
+    alert(comandoRun);
+    if (comandoRun != "")
+      this.route.navigate([comandoRun]);
+  
+      comando = ""; */
+
+
+}
+
+
 
 }
 

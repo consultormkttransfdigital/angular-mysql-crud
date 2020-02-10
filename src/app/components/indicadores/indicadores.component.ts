@@ -5,8 +5,13 @@ import { AppState } from '../../models/globals.model';
 import { IndicadoresAction } from 'src/app/main-nav/main-nav.actions';
 
 import { Chart } from 'chart.js';
+
 import { ScrollDispatcher, CdkScrollable } from '@angular/cdk/overlay';
 import { Router } from '@angular/router';
+
+import { Inject, HostListener } from '@angular/core';
+import { DOCUMENT } from "@angular/common";
+
 
 @Component({
   selector: 'indicadores',
@@ -32,18 +37,44 @@ export class IndicadoresComponent implements OnInit, AfterViewInit {
   chartLines2 = [];
 
   windowScrolled: boolean;
+  
 
   constructor( private store: Store<AppState> ,
-               private scrollDispatcher: ScrollDispatcher,
-               private zone: NgZone,
-               private route: Router ) {
+               @Inject(DOCUMENT) private document: Document ) {
 
   }
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+      if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
+          this.windowScrolled = true;
+      } 
+     else if (this.windowScrolled && window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop < 10) {
+          // this.windowScrolled = false;
+          
+          this.windowScrolled = true;
+
+      }
+  }
+
+  scrollToTop() {
+      (function smoothscroll() {
+          var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          if (currentScroll > 0) {
+              window.requestAnimationFrame(smoothscroll);
+              window.scrollTo(0, currentScroll - (currentScroll / 8));
+          }
+      })();
+  }
+
+
 
   ngOnInit() {
     const accion = new IndicadoresAction('Indicadores de Gestión');
     this.store.dispatch(accion);
-    this.windowScrolled = false;
+
+    this.windowScrolled = true;
+    
   }
 
   ngAfterViewInit(){
@@ -134,22 +165,17 @@ export class IndicadoresComponent implements OnInit, AfterViewInit {
       
 
 
-      this.scrollDispatcher.scrolled().
+/*       this.scrollDispatcher.scrolled().
         subscribe((cdk: CdkScrollable) => {
 
           console.log("Evento Disparado!!!");
           console.log(this.fabInner.nativeElement);
           console.log(cdk.measureScrollOffset("top"));
-
-          if (cdk.measureScrollOffset("top") > 0 ) {
-            this.windowScrolled = true;
-          } else
-            this.windowScrolled = false;
-
           this.zone.run(()=>{
-            
           });
         }); 
+ */
+
 
     });
       
@@ -159,37 +185,35 @@ export class IndicadoresComponent implements OnInit, AfterViewInit {
   }
 
   
-  
-  irArriba() {
-/*     this.scrollDispatcher.scrolled().subscribe((cdk: CdkScrollable) => {
-      //cdk.scrollTo(-100);
-    });
- */
-    console.log("irArriba!");
-    // this.container.nativeElement.scrollTo(0,0);
-    this.route.navigate(['indicadores']);
-  }
-
-
-  scrollToTop() {
-    console.log("scrollToTop!");
-    (function smoothscroll() {
-        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log("currentScroll", currentScroll);
-
-/*         if (currentScroll > 0) {
-            window.requestAnimationFrame(smoothscroll);
-            // window.scrollTo(0, currentScroll - (currentScroll / 8));
-            window.scrollTo(0, 0);
-        } */
-        
-        window.requestAnimationFrame(smoothscroll);
-        window.scrollTo(0, 0);
-
-    })();
-}
-
 
 
 
 }
+
+
+
+
+/*           if (cdk.measureScrollOffset("top") > 0 ) {
+            this.windowScrolled = true;
+          } else
+            this.windowScrolled = false; */
+
+
+/*             private scrollDispatcher: ScrollDispatcher,
+            private zone: NgZone,
+            private route: Router, */
+
+
+
+ /*  
+            irArriba() {
+                   this.scrollDispatcher.scrolled().subscribe((cdk: CdkScrollable) => {
+                    //cdk.scrollTo(-100);
+                  });
+               
+                  console.log("irArriba!");
+                  // this.container.nativeElement.scrollTo(0,0);
+                  this.route.navigate(['indicadores']);
+                }
+              
+   */       

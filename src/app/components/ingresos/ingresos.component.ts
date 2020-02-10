@@ -9,6 +9,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import { OrigenIngreso } from '../../models/origen-ingreso.enum';
 
+import { IngresosService } from '../../services/ingresos.service';
+import { Ingreso } from 'src/app/models/Ingreso';
+
 @Component({
   selector: 'app-ingresos',
   templateUrl: './ingresos.component.html',
@@ -19,9 +22,10 @@ export class IngresosComponent implements OnInit {
   datosGeneralesFormGroup: FormGroup;
   ingresoFormGroup: FormGroup;
   origenesIngreso: any[] = [];
-
+  
   constructor(private store: Store<AppState>,
-              private _formBuilder: FormBuilder) { }
+              private _formBuilder: FormBuilder,
+              private ingresosService: IngresosService) { }
 
   ngOnInit() {
     console.log('Entrando a Ingresos');
@@ -48,6 +52,34 @@ export class IngresosComponent implements OnInit {
     }
 
   }
+
+  saveIngreso() {
+
+    let bufferIngreso: Ingreso;
+
+    bufferIngreso = {
+      origen_ingreso : this.datosGeneralesFormGroup.value.origenIngreso,
+      cod_ingreso : this.datosGeneralesFormGroup.value.codIngreso,
+      fec_ingreso : this.datosGeneralesFormGroup.value.fecIngreso,
+      id_persona : this.datosGeneralesFormGroup.value.idPersonal,
+      tot_ingreso : this.datosGeneralesFormGroup.value.totIngreso
+    }
+        
+    console.log(this.datosGeneralesFormGroup.value);
+    console.log(bufferIngreso);
+
+    this.ingresosService.saveIngreso(bufferIngreso).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => console.error(err)
+    ); 
+
+
+  }
+
+
+
 
   onChangeFecha(param){
 
